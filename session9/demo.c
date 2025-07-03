@@ -12,8 +12,8 @@ Node *createNode(int data)
     node->next = NULL;
     return node;
 }
-
-// tao ham lay ra do dai cua danh sach
+//tra ve con tro vi tra ve dia chi cua cai node
+// tao ham lay ra do dai cua danh s ach
 int  getLength(Node* head){
     Node* current = head;
     int length = 0;
@@ -174,8 +174,10 @@ Node* removeAt(Node* head, int index){
     }
     //b5: lay thong tin cua node can xoa (thong qua node ke can) va luu node do vao 1 bien tam
     Node* removeNode = current->next;
+    //lay cai gia tri dang sau remove
     Node* next = removeNode->next;
     //b6: ngat ket noi cua node ke can den node can xoa
+    
     //b7: tra lai vi tri cua node ke can do -> node dang sau node can xoa
     current->next = next;
     //n8: ngat 
