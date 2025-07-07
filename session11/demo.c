@@ -6,6 +6,10 @@ typedef struct Node
     struct Node *next;
     struct Node *prev;
 } Node;
+//them vao gan cuoi
+//them vao gan dau
+
+//in nguoc list
 Node *createNode(int data)
 {
     // b1: cap phat bo nho cho 1 node
