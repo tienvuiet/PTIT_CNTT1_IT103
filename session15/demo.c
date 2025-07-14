@@ -1,74 +1,68 @@
-#include<stdio.h>
-// khai bao cau truc hang doi
-#define MAX 100
-typedef struct
-{
-    int data[MAX];
-    int front; // chi so phan tu dau hang
-    int rear;  // chi so phan tu cuoi cung
+
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Queue {
+    int *arr;
+    int front;//chi so dau 
+    int rear;//chi so cuoi
+    int capacity;
 } Queue;
-// khoi tao hang doi
-void initQueuye(Queue *q)
-{
-    q->front = 0; // san sang lay phan tu dau tien neu co
 
-    q->rear = -1; // hang doi chua co phan tu nao
-}
-// kiem tra hang doi co phan tu hay ko
-int isEmpty(Queue *q) { 
-    return q->front>q->rear;
-
+Queue *createQueue(int capacity) {
+    Queue *q = (Queue *)malloc(sizeof(Queue));
+    q -> arr = (int *)malloc(capacity * sizeof(int));
+    q -> front = 0;
+    q -> rear = -1;
+    q -> capacity = capacity;
+    return q;
 }
 
-// kiem tra hang doi da day hay chua
-int isFull(Queue* q){
-    return q->rear==MAX-1;//1: day con khac 1 thi se co phan tu roi 
-}
-// them phan tu
-void enQueue(Queue* q, int x){
-    if(isFull(q)){
-        printf("Queue is full\n");
-        return ;
+void enQueue(Queue *queue, int value) {
+    // B1: Kiem tra hang doi (Mang khong con vi tri de them)
+    if (queue -> rear == queue -> capacity - 1) {
+        return;
     }
-    q->rear++;
-    q->data[q->rear]=x;
+    // B2: Tang chi so rear len
+    queue -> rear++;
+    // B3: Them gia tri vao vi tri rear
+    queue -> arr[queue -> rear] = value;
 }
-// xoa phan tu
-int deQueue(Queue* q){
-    if(isEmpty(q)){
-        printf("Queue is empty\n");
-        return -1;
 
-    }
-    int val = q->data[q->front];
-    q->front++;
-    return val;
-}
-// xem phan tu dau tien trong hang doi
-int frontValue(Queue* q){
-    if(isEmpty(q)){
-        printf("khong co phan tu");
-        return -1;
-    }
-    return q->data[q->front];
-}
-// in danh sach cac phan tu trong hang doi
-void printQueue(Queue* q){
-    if(isEmpty(q)){
+//xay dung ham lay khoi ham doi
+void deQueue(Queue* queue){
+    //b1: kiem tra hang doi trong
+    if(queue->rear<queue->front){
         printf("hang doi trong");
         return ;
     }
-    for(int i = q->front ; i<= q->rear; i++){
-        printf("%d ", q->data[i]);
+    //b2:tang gia tri fornt len
+    queue->front= queue->front+1;
+}
+
+//ham xem phan tu dau hang doi
+int getFront(Queue *queue){
+    //b1: kt hang doi trong
+    if (queue -> rear == queue -> capacity - 1) {
+        printf("Queue is empty");
+        return -1;
+    }
+    //n2: tra ve phan tu co chi so la front
+    return queue->arr[queue->rear];
+
+}
+//xay dung ham in toan bo hang doi
+void displayQueue(Queue *queue){
+    //kiem tra hang doi trong
+    if(queue->rear<queue->front){
+        return ;
+    }
+    //in cac ptu co chi so tu front den rear
+    for(int i = queue->front; i<= queue->rear; i++ ){
+        printf("%d ", queue->arr[i]);
     }
 }
-int main (){
-    Queue q;
-    initQueuye(&q);
-    enQueue(&q, 10);
-    enQueue(&q, 20);
-    enQueue(&q, 30);
-    enQueue(&q, 40);
-    enQueue(&q, 50);
-    printQueue(&q);
+int main() {
+
+    return 0;
 }
