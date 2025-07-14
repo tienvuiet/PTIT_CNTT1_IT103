@@ -33,11 +33,6 @@ void enQueue(Queue *queue, int data)
 {
     // b1 khoi tao node va kt bo nho
     Node *newNode = createNode(data);
-    if (newNode == NULL)
-    {
-        printf("Queue is full");
-        return;
-    }
     // b2 xu ly hang doi trong( queue->front==NULL)
     if (queue->front == NULL)
     {
