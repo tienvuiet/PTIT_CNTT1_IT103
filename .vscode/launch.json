@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/PTIT_CNTT1_IT103/session1",
-      "program": "d:/PTIT_CNTT1_IT103/session1/build/Debug/outDebug",
+      "cwd": "d:/PTIT_CNTT1_IT103/session19",
+      "program": "d:/PTIT_CNTT1_IT103/session19/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
